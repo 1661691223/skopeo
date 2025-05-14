@@ -13,7 +13,7 @@ jobs:
       - name: Build static binary
         run: |
           docker run --rm -t -v $PWD:/build --name builder ${BUILD_IMAGE} \
-          sh -c "cd /build && nix build -f nix && cp ./result/bin/skopeo skopeo-linux-amd64"
+          sh -c "which nix && find / -name nix &&cd /build && nix build -f nix && cp ./result/bin/skopeo skopeo-linux-amd64"
 
       - name: Release
         uses: softprops/action-gh-release@v1
